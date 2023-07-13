@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/notes}
+    username: ${JDBC_DATABASE_USERNAME:postgres}
+    password: ${JDBC_DATABASE_PASSWORD:password}
+    dbcp2:
+      max-wait-millis: 30000
+      validation-query: select 1
+      validation-query-timeout: 30
+  jpa:
+    hibernate:
+      ddl-auto: update
+  docker:
+    compose:
+      lifecycle-management: start-only
+springdoc:
+  pathsToMatch: /api/**
